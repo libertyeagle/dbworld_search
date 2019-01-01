@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,13 +20,14 @@ import java.util.concurrent.TimeUnit;
 
 class Crawler {
     private static final Locale LOCALE = Locale.US;
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy", LOCALE);
+    private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy", LOCALE);
     private static final String INFO_SITE = "https://research.cs.wisc.edu/dbworld/browse.html";
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2)"
             + "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15";
     CopyOnWriteArrayList<DBWorldMessage> dbworld_messages = new CopyOnWriteArrayList<DBWorldMessage>();
 
     boolean crawl(String first_item_subject) {
+        DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("MST"));
         long startTime = System.currentTimeMillis();
 
         Connection connection;

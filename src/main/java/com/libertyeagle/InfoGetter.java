@@ -60,4 +60,29 @@ public class InfoGetter {
         dbworld_info.clear();
         dbworld_info.addAll(dbworld_list);
     }
+
+    public void read_processed_data_from_file() {
+        FileInputStream file_in;
+        try {
+            file_in = new FileInputStream("DBWorld_Data/CONF_PROCESSED_DATA.bin");
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("file not found while create FileInputStream");
+            return;
+        }
+        ArrayList<DBWorldMessage> dbworld_list;
+        try {
+            ObjectInputStream obj_in = new ObjectInputStream(file_in);
+            dbworld_list = (ArrayList<DBWorldMessage>) obj_in.readObject();
+            obj_in.close();
+            file_in.close();
+        } catch (IOException ioe) {
+            System.out.println("I/O exception encountered in reading.");
+            return;
+        } catch (ClassNotFoundException ce) {
+            System.out.println("class not found.");
+            return;
+        }
+        dbworld_info.clear();
+        dbworld_info.addAll(dbworld_list);
+    }
 }

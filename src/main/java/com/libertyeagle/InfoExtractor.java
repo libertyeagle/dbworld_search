@@ -13,20 +13,18 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 
 public class InfoExtractor {
     private static final Locale LOCALE = Locale.US;
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", LOCALE);
+    private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", LOCALE);
     private static final String[] TOPIC_KEYWORDS = {"topic", "not limited to", "might cover"};
     private static final String[] TOPIC_FOLLOWING_KEYWORDS = {"submission procedure", "submission format",
             "submission guidelines", "submissions \n", "submissions\n",
             "editors-in-chief", "important dates", "organization"};
 
     public static void extract_conf_info() {
+        DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("MST"));
 
         InfoGetter info_getter = new InfoGetter();
         info_getter.read_data_from_file();

@@ -3,9 +3,9 @@ package com.libertyeagle;
 import java.io.Serializable;
 import java.util.Date;
 
-class ConferenceInfo implements Serializable {
-    Date start_date;
-    Date end_date;
-    String location;
-    String topics;
+public class ConferenceInfo implements Serializable {
+    public Date start_date;
+    public Date end_date;
+    public String location;
+    public String topics;
 }
