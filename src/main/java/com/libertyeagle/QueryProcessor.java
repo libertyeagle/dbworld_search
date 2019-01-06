@@ -23,7 +23,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class QueryProcessor {
-    private static final String INDEX_DIR = "/Users/libertyeagle/dbworld_search/DBWorld_Data/lucene_index";
+    private static final String INDEX_DIR = "/Users/libertyeagle/IdeaProjects/dbworld_search/DBWorld_Data/lucene_index";
     private static final Locale LOCALE = Locale.US;
     private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", LOCALE);
     private IndexReader index_reader;
